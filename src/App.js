@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import StarRating from "./StarRating";
+import { Logo } from "./Logo";
+import { SearchBar } from "./SearchBar";
 
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -7,7 +9,7 @@ const average = (arr) =>
 const KEY = "4e376efd";
 
 export default function App() {
-  const [query, setQuery] = useState("inception");
+  const [query, setQuery] = useState("stinky");
   const tempQuery = "interstellar";
 
   const [watched, setWatched] = useState([]);
@@ -22,6 +24,10 @@ export default function App() {
 
   function handleCloseMovie() {
     setSelectedId(null);
+  }
+
+  function handleAddWatched(movie) {
+    setWatched((watched) => [...watched, movie]);
   }
 
   useEffect(
@@ -76,6 +82,8 @@ export default function App() {
               apiKey={KEY}
               selectedId={selectedId}
               onCloseMovie={handleCloseMovie}
+              onAddWatched={handleAddWatched}
+              watched={watched}
             />
           ) : (
             <>
@@ -99,27 +107,6 @@ function Navbar({ children }) {
       <Logo />
       {children}
     </nav>
-  );
-}
-
-function Logo() {
-  return (
-    <div className="logo">
-      <span role="img">🍿</span>
-      <h1>Foxie's Watchers</h1>
-    </div>
-  );
-}
-
-function SearchBar({ query, setQuery }) {
-  return (
-    <input
-      className="search"
-      type="text"
-      placeholder="Search movies..."
-      value={query}
-      onChange={(e) => setQuery(e.target.value)}
-    />
   );
 }
 
@@ -180,11 +167,12 @@ function MovieItem({ movie, handleMovieSelect }) {
   );
 }
 
-function SelectedMovie({ selectedId, onCloseMovie }) {
+function SelectedMovie({ selectedId, onCloseMovie, onAddWatched, watched }) {
+  const [userRating, setUserRating] = useState(null);
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const isWatched = watched.map((item) => item.imdbID).includes(selectedId);
   const url = `http://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`;
-
   const {
     Title: title,
     Year: year,
@@ -197,6 +185,20 @@ function SelectedMovie({ selectedId, onCloseMovie }) {
     Director: director,
     Genre: genre,
   } = movie;
+
+  function handleAdd() {
+    const newWatchedMovie = {
+      userRating,
+      imdbID: selectedId,
+      title,
+      year,
+      poster,
+      imdbRating: Number(imdbRating),
+      runtime: Number(runtime.split(" ").at(0)),
+    };
+    onAddWatched(newWatchedMovie);
+    onCloseMovie();
+  }
 
   useEffect(
     function () {
@@ -241,7 +243,25 @@ function SelectedMovie({ selectedId, onCloseMovie }) {
           </header>
           <section>
             <div className="rating">
-              <StarRating size={24} maxRating={10} />
+              {!isWatched ? (
+                <>
+                  {" "}
+                  <StarRating
+                    size={24}
+                    maxRating={10}
+                    onsetUserRating={setUserRating}
+                  />
+                  {userRating > 0 ? (
+                    <button className="btn-add" onClick={handleAdd}>
+                      Add to watched-list
+                    </button>
+                  ) : (
+                    ""
+                  )}
+                </>
+              ) : (
+                <p>You already watched this movie</p>
+              )}
             </div>
             <p>
               <em>{plot}</em>
@@ -298,8 +318,8 @@ function WatchedList({ watched }) {
 function WatchedItem({ movie }) {
   return (
     <li>
-      <img src={movie.Poster} alt={`${movie.Title} poster`} />
-      <h3>{movie.Title}</h3>
+      <img src={movie.poster} alt={`${movie.title} poster`} />
+      <h3>{movie.title}</h3>
       <div>
         <p>
           <span>⭐️</span>
