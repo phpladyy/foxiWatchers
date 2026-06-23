@@ -13,7 +13,7 @@ export const average = (arr) =>
 const KEY = "4e376efd";
 
 export default function App() {
-  const [query, setQuery] = useState("start");
+  const [query, setQuery] = useState("");
   const tempQuery = "interstellar";
 
   const [watched, setWatched] = useState([]);
@@ -40,12 +40,15 @@ export default function App() {
 
   useEffect(
     function () {
+      const controller = new AbortController();
+
       async function fetchMovies() {
         try {
           setIsLoading(true);
           setError("");
           const res = await fetch(
             `http://www.omdbapi.com/?s=${query}&type=movie&page=1&apikey=${KEY}`,
+            { signal: controller.signal },
           );
 
           if (!res.ok) throw new Error("something went wrong with fetching");
@@ -54,17 +57,24 @@ export default function App() {
 
           setMovies(data.Search);
         } catch (err) {
-          setError(err.message);
+          console.log(err.message);
+          if (err.name !== "AbortError") {
+            setError(err.message);
+          }
         } finally {
           setIsLoading(false);
         }
       }
-      if (query.length < 2) {
+      if (query.length < 3) {
         setMovies([]);
         setError("");
         return;
       }
+      handleCloseMovie();
       fetchMovies();
+      return function () {
+        controller.abort();
+      };
     },
     [query],
   );
@@ -173,26 +183,38 @@ function SelectedMovie({ selectedId, onCloseMovie, onAddWatched, watched }) {
     onCloseMovie();
   }
 
+  //closing movie on escape key press
+  useEffect(
+    function () {
+      function closeOnEcape(e) {
+        if (e.code === "Escape") {
+          onCloseMovie();
+        }
+      }
+      document.addEventListener("keydown", closeOnEcape);
+      return function () {
+        document.removeEventListener("keydown", closeOnEcape);
+      };
+    },
+    [onCloseMovie],
+  );
+
   // fetching selected movie details
   useEffect(() => {
     async function getDetails() {
       setIsLoading(true);
       const detailsRaw = await fetch(url);
-      if (!detailsRaw.ok) {
-        throw new Error(`Fetching error`);
-      }
       const movieDetails = await detailsRaw.json();
-      console.log(movieDetails);
       setMovie((movie) => movieDetails);
       setIsLoading(false);
     }
     getDetails();
-  }, [selectedId]);
+  }, [url]);
 
   //web page title changer
   useEffect(() => {
     document.title = title ? title : "Loading...";
-//resetting title on onmount
+    //resetting title on onmount
     return () => {
       document.title = "Foxie's Watchlist";
     };
@@ -200,7 +222,7 @@ function SelectedMovie({ selectedId, onCloseMovie, onAddWatched, watched }) {
 
   return (
     <div className="details">
-      {isLoading ? ( 
+      {isLoading ? (
         <Loader />
       ) : (
         <>

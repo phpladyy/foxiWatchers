@@ -29,13 +29,15 @@ function WatchedItem({ movie, onRemoveWatched }) {
           <span>⏳</span>
           <span>{movie.runtime} min</span>
         </p>
-
-        <button
-          className="btn-delete"
-          onClick={() => onRemoveWatched(movie.imdbID)}
-        >
-          &times;
-        </button>
+        <p>
+          <button
+            className="btn-delete"
+            onClick={() => onRemoveWatched(movie.imdbID)}
+          >
+            &times;
+          </button>
+        </p>
+        
       </div>
     </li>
   );
