@@ -13,10 +13,14 @@ export const average = (arr) =>
 const KEY = "4e376efd";
 
 export default function App() {
-  const [query, setQuery] = useState("");
-  const tempQuery = "interstellar";
+  const [query, setQuery] = useState("shutter");
+  const tempQuery = "shutter";
 
-  const [watched, setWatched] = useState([]);
+  const [watched, setWatched] = useState(function(){
+    const storedValue = localStorage.getItem('watched');
+    return JSON.parse(storedValue);
+  });
+
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -37,6 +41,12 @@ export default function App() {
   function handleRemoveWatched(id) {
     setWatched((watched) => watched.filter((item) => item.imdbID !== id));
   }
+
+
+  // synchronising watched state with local storage
+  useEffect(() => {
+    localStorage.setItem("watched", JSON.stringify(watched));
+  }, [watched]);
 
   useEffect(
     function () {
@@ -145,9 +155,10 @@ function Panel({ children }) {
     </div>
   );
 }
+
 function SelectedMovie({ selectedId, onCloseMovie, onAddWatched, watched }) {
-  const [userRating, setUserRating] = useState(null);
   const [movie, setMovie] = useState({});
+  const [userRating, setUserRating] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const isWatched = watched.map((item) => item.imdbID).includes(selectedId);
   const url = `http://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`;
@@ -168,6 +179,9 @@ function SelectedMovie({ selectedId, onCloseMovie, onAddWatched, watched }) {
     Director: director,
     Genre: genre,
   } = movie;
+
+  const isTop = imdbRating > 8;
+  console.log(isTop);
 
   function handleAdd() {
     const newWatchedMovie = {
