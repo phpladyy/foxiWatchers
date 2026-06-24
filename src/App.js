@@ -16,7 +16,7 @@ export default function App() {
   const [query, setQuery] = useState("shutter");
   const tempQuery = "shutter";
 
-  const [watched, setWatched] = useState(function(){
+  const [watched, setWatched] = useState(()=>{
     const storedValue = localStorage.getItem('watched');
     return JSON.parse(storedValue);
   });
@@ -67,7 +67,6 @@ export default function App() {
 
           setMovies(data.Search);
         } catch (err) {
-          console.log(err.message);
           if (err.name !== "AbortError") {
             setError(err.message);
           }
