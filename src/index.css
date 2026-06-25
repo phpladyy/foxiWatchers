@@ -1,11 +1,11 @@
 :root {
-  --color-primary: #780d7c;
-  --color-primary-light: #442258;
+  --color-primary: #ff8000;
+  --color-primary-light: #17191d;
   --color-text: #dee2e6;
   --color-text-dark: #adb5bd;
-  --color-background-100: #343a40;
-  --color-background-500: #2b3035;
-  --color-background-900: #212529;
+  --color-background-100: #2b2b2b;
+  --color-background-500: #1a1a1a;
+  --color-background-900: #000000;
   --color-red: #fa5252;
   --color-red-dark: #e03131;
 }
@@ -17,7 +17,7 @@
 }
 
 html {
-  font-size: 1vw;
+  font-size: 0.8vw;
 }
 
 body {
@@ -72,6 +72,7 @@ body {
   }
 }
 .nav-bar {
+  color: #000000;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
@@ -126,9 +127,10 @@ body {
 
 .logo h1 {
   font-size: 2.4rem;
-  font-weight: 600;
-  color: #fff;
+  font-weight: 800;
+ 
 }
+
 
 .search {
   justify-self: center;
