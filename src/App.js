@@ -8,6 +8,7 @@ import { Navbar } from "./Navbar";
 import { SelectedMovie } from "./SelectedMovie";
 import { useMovies } from "./useMovies";
 import { useLocalStorage } from "./useLocalStorage";
+import { ModeSwitch } from "./ModeSwitch";
 
 
 export const average = (arr) =>
@@ -42,6 +43,7 @@ export default function App() {
     <>
       <Navbar>
         <SearchBar query={query} setQuery={setQuery} />
+        <ModeSwitch/>
         <ResultsNum movies={movies} />
       </Navbar>
 
