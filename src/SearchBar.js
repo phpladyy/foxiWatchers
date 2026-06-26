@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useKeyPress } from "./useKeyPress";
 
 export function SearchBar({ query, setQuery }) {
@@ -9,6 +9,9 @@ export function SearchBar({ query, setQuery }) {
     inputElement.current.focus();
     setQuery("");
   }
+  useEffect(()=>{
+    inputElement.current.focus();
+  },[])
 
   useKeyPress("Enter", callback);
 

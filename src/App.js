@@ -35,8 +35,10 @@ export default function App() {
     setWatched((watched) => [...watched, movie]);
   }
 
-  function handleRemoveWatched(id) {
+  function handleRemoveWatched(e,id) {
+    e.stopPropagation();
     setWatched((watched) => watched.filter((item) => item.imdbID !== id));
+    
   }
 
   return (
@@ -72,6 +74,7 @@ export default function App() {
               <WatchedList
                 watched={watched}
                 onRemoveWatched={handleRemoveWatched}
+                onMovieSelect={handleMovieSelect}
               />
             </>
           )}
