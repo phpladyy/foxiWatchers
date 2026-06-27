@@ -82,7 +82,13 @@ body {
   background-color: var(--color-primary);
   border-radius: 0.9rem;
 }
-
+.nav-profile-picture {
+  justify-self: end;
+  height: 5rem;      /* dopasowane do wysokości navbara */
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
 .main {
   margin-top: 2.4rem;
   height: calc(100vh - 7.2rem - 3 * 2.4rem);

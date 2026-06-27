@@ -2,12 +2,16 @@ import { useState, useEffect, useRef } from "react";
 import { KEY, Loader } from "./App";
 import StarRating from "./StarRating";
 import { useKeyPress } from "./useKeyPress";
+import axios from "axios";
+import { SUPABASE_KEY } from "./App";
+import { SUPABASE_URL } from "./App";
 
 export function SelectedMovie({
   selectedId,
   onCloseMovie,
   onAddWatched,
   watched,
+  userProfile
 }) {
   const [movie, setMovie] = useState({});
   const [userRating, setUserRating] = useState(null);
@@ -40,6 +44,7 @@ export function SelectedMovie({
   } = movie;
 
 
+
   function handleAdd() {
     const newWatchedMovie = {
       userRating,
@@ -51,6 +56,7 @@ export function SelectedMovie({
       runtime: Number(runtime.split(" ").at(0)),
       countRatingChanges: countRef.current,
     };
+    
     onAddWatched(newWatchedMovie);
     onCloseMovie();
   }
