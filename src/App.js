@@ -50,8 +50,6 @@ export default function App() {
         setUserProfile(null);
       }
     };
-
-    console.log(userProfile);
     fetchData();
   }, [session]);
 
@@ -66,8 +64,7 @@ export default function App() {
         },
       },
     );
-    console.log("freshProfile response:", freshProfile); // <-- sprawdź to w konsoli
-    console.log("userProfile.id:", userProfile.id);
+
     const currentProfile = freshProfile[0];
     const updatedMovies = [...(currentProfile.watched_movies || []), { movie }];
 
