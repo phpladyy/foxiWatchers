@@ -64,19 +64,14 @@ export default function StarRating({
           />
         ))}
       </div>
-      <p style={textStyle}>
-        {messages.length === maxRating
-          ? messages[tempRating ? tempRating - 1 : rating - 1]
-          : tempRating || rating || ""}
-      </p>
     </div>
   );
 }
 
 function Star({ onClick, full, onHover, onHoverOut, color, size }) {
   const starStyle = {
-   width: `clamp(4px, ${size}vmin, 48px)`,
-  height: `clamp(4px, ${size}vmin, 48px)`,
+   width: `clamp(4px, ${size}vw, 3vw)`,
+  height: `clamp(4px, ${size}vw, 3vw)`,
     display: "block",
     cursor: "pointer",
   };
