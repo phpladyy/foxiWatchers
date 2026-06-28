@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { SearchBar } from "./SearchBar";
 import { WatchedSummary } from "./WatchedSummary";
 import { WatchedList } from "./WatchedList";
@@ -27,12 +27,7 @@ export default function App() {
   const [userProfile, setUserProfile] = useState(null);
   const [session, setSession] = useLocalStorage(null, "sessionId");
 
-  useEffect(() => {
-    if (!session) return;
-    fetchWatchedlist();
-  }, [session]);
-
-  const fetchWatchedlist = async () => {
+  const fetchWatchedlist = useCallback(async () => {
     const { data, error } = await supabase
       .from("profiles")
       .select("watched_movies")
@@ -45,7 +40,12 @@ export default function App() {
       return;
     }
     setWatched(data[0].watched_movies || []);
-  };
+  }, [session]);
+
+  useEffect(() => {
+    if (!session) return;
+    fetchWatchedlist();
+  }, [session, fetchWatchedlist]);
 
   useEffect(() => {
     if (!session) {
