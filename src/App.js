@@ -100,7 +100,8 @@ export default function App() {
 
   return (
     <>
-      {!authChecked ? (
+      {!session ? (
+        
         <Login setUserProfile={setUserProfile} setSession={setSession} />
       ) : (
         <>
