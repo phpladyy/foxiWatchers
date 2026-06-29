@@ -31,7 +31,7 @@ export default function App() {
     });
     const { watched, error } = await res.json();
     if (error) {
-      console.log(authChecked)
+      
       console.log(error);
       return;
     }
@@ -65,7 +65,7 @@ export default function App() {
   }, [session, setSession, fetchWatchedlist]);
 
   async function handleAddWatched(movie) {
-     setWatched((prev) => [...prev, movie]); 
+     setWatched((prev) => [...prev, movie]); console.log(authChecked)
     const res = await fetch("/.netlify/functions/addWatched", {
       method: "POST",
       body: JSON.stringify({ session, watched, movie }),
