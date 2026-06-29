@@ -20,7 +20,7 @@ export default function App() {
   const [selectedId, setSelectedId] = useState(null);
   const { movies, isLoading, error } = useMovies(query);
   const [watched, setWatched] = useState([]);
-
+  const [authChecked, setAuthChecked] = useState(false);
   const [userProfile, setUserProfile] = useState(null);
   const [session, setSession] = useLocalStorage(null, "sessionId");
 
@@ -31,6 +31,7 @@ export default function App() {
     });
     const { watched, error } = await res.json();
     if (error) {
+      console.log(authChecked)
       console.log(error);
       return;
     }
