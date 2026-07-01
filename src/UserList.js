@@ -31,6 +31,7 @@ function WatchedItem({
   function handleRemove(e, id) {
     mode ? onRemoveWatched(e, id) : onRemoveWatchlist(e, id);
   }
+  console.log(movie);
   return (
     <li onClick={() => handleMovieSelect(movie.imdbID)}>
       <img src={movie.poster} alt={`${movie.title} poster`} />
@@ -40,12 +41,17 @@ function WatchedItem({
           <span>⭐️</span>
           <span>{movie.imdbRating}</span>
         </p>
-        {mode && (
+        {mode ? (
           <p>
             <span>🌟</span>
             <span>{movie.userRating}</span>
           </p>
-        )}
+        ):
+          <p>
+            <span>📅</span>
+            <span>{movie.year}</span>
+          </p>
+        }
         <p>
           <span>⏳</span>
           <span>{movie.runtime} min</span>
