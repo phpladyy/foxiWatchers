@@ -46,12 +46,12 @@ function WatchedItem({
             <span>🌟</span>
             <span>{movie.userRating}</span>
           </p>
-        ):
+        ) : (
           <p>
             <span>📅</span>
             <span>{movie.year}</span>
           </p>
-        }
+        )}
         <p>
           <span>⏳</span>
           <span>{movie.runtime} min</span>
