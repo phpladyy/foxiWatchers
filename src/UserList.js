@@ -1,7 +1,5 @@
 export function UserList({
-  watchlist,
   list,
-  setWatchlist,
   setList,
   onRemoveListItem,
   onMovieSelect,
