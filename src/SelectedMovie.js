@@ -44,7 +44,7 @@ export function SelectedMovie({
   } = movie;
 
   //for appending to watched and watchlist column
-  const handleAdd = async (action, setList) => {
+  const handleAdd = async (list) => {
     const newMovie = {
       userRating,
       imdbID: selectedId,
@@ -55,7 +55,7 @@ export function SelectedMovie({
       runtime: Number(runtime.split(" ").at(0)),
       countRatingChanges: countRef.current,
     };
-    onAddMovie(newMovie, action, setList);
+    onAddMovie(newMovie, list);
     onCloseMovie();
   };
 
@@ -138,7 +138,7 @@ export function SelectedMovie({
                     <button
                       className="btn-add"
                       onClick={() =>
-                        handleAdd("changeWatchedColumn", "setWatched")
+                        handleAdd("watched")
                       }
                     >
                       Add to Watch History
@@ -151,7 +151,7 @@ export function SelectedMovie({
               {!isWatched && !userRating && !isWatchlisted && (
                 <button
                   className="btn-add"
-                  onClick={() => handleAdd("addWatchlist", "setWatchlist")}
+                  onClick={() => handleAdd("watch_list")}
                 >
                   Add to Watchlist
                 </button>

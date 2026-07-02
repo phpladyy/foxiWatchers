@@ -36,7 +36,6 @@ export default function App() {
       const data = await fetchData(session, "/.netlify/functions/getProfile");
       if (data) {
         setUserProfile(data);
-        console.log(data);
         setWatched(data.watched_movies);
         setWatchlist(data.watch_list);
       } else {
@@ -47,30 +46,35 @@ export default function App() {
     fetchUserData();
   }, [session, setSession]);
 
-  async function handleAddMovie(movie, action, setList) {
+  async function handleAddMovie(movie, list) {
     const promises = [];
-    if (setList === "setWatched") {
+    if (list === "watched") {
       const updatedWatchlist = watchlist.filter(
         (item) => item.imdbID !== movie.imdbID,
       );
       setWatchlist(updatedWatchlist);
-      promises.push(updateTable(session, updatedWatchlist, "addWatchlist"));
+      promises.push(
+        updateTable(session, updatedWatchlist, "editColumn", "watch_list"),
+      );
     }
-
-    const setColumn = setList === "setWatched" ? setWatched : setWatchlist;
-    const column = setList === "setWatched" ? watched : watchlist;
+    const setColumn = list === "watched" ? setWatched : setWatchlist;
+    const column = list === "watched" ? watched : watchlist;
     const update = [...column, movie];
     setColumn(update);
-    promises.push(updateTable(session, update, action));
+    const dbColumn = list === "watched" ? "watched_movies" : "watch_list";
+    promises.push(updateTable(session, update, "editColumn", dbColumn));
     await Promise.all(promises);
   }
 
-  async function handleRemoveListItem(e, id, action, list, setList) {
+  async function handleRemoveListItem(e, id, list, setList) {
     e.stopPropagation();
     const update = list.filter((item) => item.imdbID !== id);
     setList(update);
-    await updateTable(session, update, action);
+
+    const dbColumn = mode ? "watched_movies" : "watch_list";
+    await updateTable(session, update, "editColumn", dbColumn);
   }
+
   function handleMovieSelect(id) {
     selectedId === id ? setSelectedId(null) : setSelectedId(id);
   }
@@ -103,13 +107,11 @@ export default function App() {
               )}
               {error && <ErrorMessage message={error} />}
             </Panel>
-
             <Panel>
               {selectedId ? (
                 <SelectedMovie
                   userProfile={userProfile}
                   key={selectedId}
-                  apiKey={KEY}
                   selectedId={selectedId}
                   onCloseMovie={handleCloseMovie}
                   onAddMovie={handleAddMovie}

@@ -6,9 +6,7 @@ export function UserList({
   mode,
 }) {
   function handleRemove(e, id) {
-    mode
-      ? onRemoveListItem(e, id, "changeWatchedColumn", list, setList)
-      : onRemoveListItem(e, id, "addWatchlist", list,setList);
+    onRemoveListItem(e, id, list, setList,mode);
   }
   return (
     <ul className="list list-movies">
@@ -31,7 +29,6 @@ function WatchedItem({
   mode,
   handleRemove,
 }) {
-  console.log(movie);
   return (
     <li onClick={() => handleMovieSelect(movie.imdbID)}>
       <img src={movie.poster} alt={`${movie.title} poster`} />
