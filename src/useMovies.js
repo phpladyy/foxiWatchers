@@ -18,9 +18,8 @@ export function useMovies(query) {
 
           if (!res.ok) throw new Error("something went wrong with fetching");
           const data = await res.json();
-          console.log(data);
           if (data.Response === "False") throw new Error("Movie not found");
-
+          
           setMovies(data?.Search || [data]);
         } catch (err) {
           if (err.name !== "AbortError") {
@@ -30,7 +29,7 @@ export function useMovies(query) {
           setIsLoading(false);
         }
       }
-  
+
       fetchMovies();
       return function () {
         controller.abort();
