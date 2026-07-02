@@ -2,7 +2,6 @@ import { average } from "./App";
 
 export function WatchedSummary({ userMovies, mode }) {
   const avgImdbRating = average(userMovies.map((movie) => movie.imdbRating));
-  const avgUserRating = average(userMovies.map((movie) => movie.userRating));
   const totalRuntime =
     userMovies.length > 0
       ? userMovies.reduce((acc, cur) => acc + cur.runtime, 0)
@@ -37,12 +36,6 @@ export function WatchedSummary({ userMovies, mode }) {
           </svg>
           {avgImdbRating.toFixed(2)}
         </p>
-        {mode && (
-          <p title="Average user rating">
-            <span>🌟</span>
-            <span>{avgUserRating.toFixed(2)}</span>
-          </p>
-        )}
         <p title="Total Watch time">
           <span>⏳</span>
           <span>{totalRuntime} min</span>
