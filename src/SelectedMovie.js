@@ -27,6 +27,7 @@ export function SelectedMovie({
   )?.userRating;
 
   const {
+    Rated: pegi,
     Title: title,
     Year: year,
     Poster: poster,
@@ -44,6 +45,7 @@ export function SelectedMovie({
   //for appending to watched and watchlist column
   const handleAdd = async (list) => {
     const newMovie = {
+      pegi,
       userRating,
       imdbID: selectedId,
       title,
@@ -115,7 +117,7 @@ export function SelectedMovie({
             <div className="details-overview">
               <h2>{title}</h2>
               <p>
-                {released} &sdot; {runtime}
+                {released} &sdot; {runtime} &sdot; {pegi}
               </p>
               <p>{genre}</p>
               <CriticRatings

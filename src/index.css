@@ -130,8 +130,8 @@ body {
   justify-content: center;
 }
 .box {
-  width: 42rem;
-  max-width: 42rem;
+  scrollbar-gutter: stable;
+  width: 34vw;
   background-color: var(--color-background-500);
   border-radius: 0.9rem;
   overflow: auto;
