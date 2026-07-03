@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export function MovieList({ movies, onMovieSelect }) {
   return (
     <ul className="list list-movies">
@@ -12,15 +14,17 @@ export function MovieList({ movies, onMovieSelect }) {
   );
 }
 function MovieItem({ movie, handleMovieSelect }) {
+  const [imageStatus, setImageStatus] = useState(true);
+  if (!imageStatus) {
+    return;
+  }
+  console.log(movie);
   return (
     <li onClick={() => handleMovieSelect(movie.imdbID)}>
       <img
         src={movie.Poster}
         alt={`${movie.Title} poster`}
-        onError={(e) =>
-          (e.target.src =
-            "https://placehold.jp/150/3d4070/ffffff/550x900.png?text=No+Poster")
-        }
+        onError={(e) => setImageStatus(false)}
       />
       <h3>{movie.Title}</h3>
       <div>
