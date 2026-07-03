@@ -27,6 +27,7 @@ export function SelectedMovie({
   )?.userRating;
 
   const {
+    Type: type,
     Rated: pegi,
     Title: title,
     Year: year,
@@ -75,6 +76,7 @@ export function SelectedMovie({
         if (!detailsRaw.ok)
           throw new Error("something went wrong with fetching");
         const movieDetails = await detailsRaw.json();
+        console.log(movieDetails);
 
         if (movieDetails.Response === "False")
           throw new Error("Movie not found");
@@ -166,6 +168,10 @@ export function SelectedMovie({
                   Remove from Watchlist
                 </button>
               )}
+
+              {type==='movie' && <a className="btn-add" href={`https://vidsrc.me/embed/movie/${selectedId}`}>
+                  Watch online
+                  </a>}
             </div>
             <p>
               <em>{plot}</em>

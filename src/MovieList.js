@@ -18,7 +18,6 @@ function MovieItem({ movie, handleMovieSelect }) {
   if (!imageStatus) {
     return;
   }
-  console.log(movie);
   return (
     <li onClick={() => handleMovieSelect(movie.imdbID)}>
       <img

@@ -367,6 +367,8 @@ body {
 
 .btn-add,
 .btn-switch, .btn-logout {
+  text-align: center;
+  text-decoration: none;
   background-color: var(--color-primary);
   color: var(--color-text);
   border: none;
