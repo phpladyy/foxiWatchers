@@ -168,7 +168,7 @@ export function SelectedMovie({
                 </button>
               )}
 
-              {type==='movie' && <a className="btn-add" href={`https://vidsrc.me/embed/movie/${selectedId}`}>
+              {type==='movie' && <a className="btn-add" href={`https://multiembed.mov/?video_id=${selectedId}`}>
                   Watch online
                   </a>}
             </div>
