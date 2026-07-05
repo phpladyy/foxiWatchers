@@ -17,6 +17,7 @@
 }
 
 html {
+  overflow: hidden;
   font-size: 0.8vw;
 }
 @media (max-width: 800px) {
