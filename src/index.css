@@ -89,9 +89,9 @@ body {
 }
 @media (max-width: 800px) {
   .nav-bar {
-    padding: 0 2.2rem;
+    padding: 0 1rem;
     height: 8rem;
-    grid-template-columns: 0.6fr 0.4fr 0.4fr 0.2fr;
+    grid-template-columns: 0.8fr 0.3fr 0.5fr 0.2fr;
   }
 }
 .nav-profile-picture {
@@ -470,11 +470,18 @@ body {
   color: var(--color-text);
   border: none;
   border-radius: 10rem;
-  font-size: 1.4rem;
+  font-size: 1.4vw;
   padding: 1rem;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s;
+}
+@media (max-width: 800px) {
+  .btn-add,
+.btn-switch,
+.btn-logout{
+  font-size: 2.3vw;
+}
 }
 
 .btn-add:hover,
