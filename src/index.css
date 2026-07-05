@@ -17,6 +17,7 @@
 }
 
 html {
+  overflow: hidden;
   font-size: 0.8vw;
 }
 @media (max-width: 800px) {
@@ -136,7 +137,7 @@ body {
 }
 .main {
   margin-top: 2.4rem;
-  height: calc(100vh - 7.2rem - 3 * 2.4rem);
+  height: calc(100dvh - 7.2rem - 3 * 2.4rem);
   display: flex;
   gap: 2.4rem;
   justify-content: center;
