@@ -543,8 +543,7 @@ body {
 }
 
 @media (max-width: 800px) {
-  .list-watched {
-    height: auto;
-    overflow: visible;
+.list {
+    padding-bottom: 5vw;
   }
 }
