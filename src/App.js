@@ -28,6 +28,7 @@ export default function App() {
   const [userProfile, setUserProfile] = useState(null);
   const [session, setSession] = useLocalStorage(null, "sessionId");
   const [mobileHide, setMobileHide] = useState("hiddenSearchPanel");
+  const [returnPanel, setReturnPanel] = useState("");
 
   useEffect(() => {
     if (!session) {
@@ -76,10 +77,15 @@ export default function App() {
 
   function handleMovieSelect(id) {
     selectedId === id ? setSelectedId(null) : setSelectedId(id);
+    if (!selectedId) {
+      setReturnPanel(mobileHide);
+    }
+    setMobileHide("hiddenSearchPanel");
   }
 
   function handleCloseMovie() {
     setSelectedId(null);
+    setMobileHide(returnPanel);
   }
 
   return (
@@ -109,21 +115,6 @@ export default function App() {
             <Panel
               className={mobileHide === "hiddenSearchPanel" ? "hidden" : ""}
             >
-              {selectedId && (
-                <div className="mobileOnly">
-                  <SelectedMovie
-                    onRemoveListItem={handleRemoveListItem}
-                    userProfile={userProfile}
-                    key={selectedId}
-                    selectedId={selectedId}
-                    onCloseMovie={handleCloseMovie}
-                    onAddMovie={handleAddMovie}
-                    watched={watched}
-                    watchlist={watchlist}
-                    setWatchlist={setWatchlist}
-                  />
-                </div>
-              )}
               <div className={selectedId ? "hidden" : ""}>
                 {isLoading && <Loader />}
                 {!isLoading && !error && (
