@@ -363,6 +363,12 @@ body {
 .imdbLogo {
   width: 2.5vw;
 }
+.rateLogo {
+    width: 2.5vw;
+  }
+  .imdbLogo-big {
+    width: 4vw;
+  }
 @media (max-width: 800px) {
   .imdbLogo {
     width: 5.5vw;
@@ -381,8 +387,8 @@ body {
 }
 @media (max-width: 800px) {
   .details {
-  font-size: 2.4rem;
-}
+    font-size: 2.4rem;
+  }
 }
 
 .details header {
@@ -474,10 +480,10 @@ body {
 }
 @media (max-width: 800px) {
   .btn-add,
-.btn-switch,
-.btn-logout{
-  font-size: 2.3vw;
-}
+  .btn-switch,
+  .btn-logout {
+    font-size: 2.3vw;
+  }
 }
 
 .btn-add:hover,
@@ -527,7 +533,6 @@ body {
   }
 } */
 
-
 .btn-logout {
   font-size: 3vmin;
   margin: 1vmin;
@@ -547,4 +552,3 @@ body {
     display: none;
   }
 }
-
