@@ -28,7 +28,7 @@ export default function App() {
   const [userProfile, setUserProfile] = useState(null);
   const [session, setSession] = useLocalStorage(null, "sessionId");
   const [mobileHide, setMobileHide] = useState("hiddenSearchPanel");
-  const [returnPanel, setReturnPanel] = useState("");
+  const [returnPanel, setReturnPanel] = useState("hiddenSearchPanel");
 
   useEffect(() => {
     if (!session) {
@@ -87,7 +87,11 @@ export default function App() {
     setSelectedId(null);
     setMobileHide(returnPanel);
   }
-
+ function handleSearchClick() {
+    setSelectedId(null);
+    setMobileHide("hiddenUserList")
+    setMode(true);
+  }
   return (
     <>
       {!session ? (
@@ -96,7 +100,7 @@ export default function App() {
         <>
           <Navbar setSelectedId={setSelectedId} setQuery={setQuery}>
             <SearchBar
-              onClick={() => setMobileHide("hiddenUserList")}
+              onClick={() => handleSearchClick()}
               query={query}
               setQuery={setQuery}
             />
