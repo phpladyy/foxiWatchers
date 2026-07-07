@@ -54,7 +54,7 @@ export function SelectedMovie({
       imdbRating: Number(imdbRating),
       rottenTomatoesRating,
       metacriticRating,
-      runtime: Number(runtime.split(" ").at(0)),
+      runtime: runtime==='N/A' ? 0:Number(runtime?.split(" ").at(0)),
     };
     onAddMovie(newMovie, list);
     onCloseMovie();
