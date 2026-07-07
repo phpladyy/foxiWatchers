@@ -54,7 +54,7 @@ export function SelectedMovie({
       imdbRating: Number(imdbRating),
       rottenTomatoesRating,
       metacriticRating,
-      runtime: runtime==='N/A' ? 0:Number(runtime?.split(" ").at(0)),
+      runtime: runtime === "N/A" ? 0 : Number(runtime?.split(" ").at(0)),
     };
     onAddMovie(newMovie, list);
     onCloseMovie();
@@ -113,6 +113,7 @@ export function SelectedMovie({
             <button className="btn-back" onClick={onCloseMovie}>
               &times;
             </button>
+
             <img src={poster} alt={`Poster of ${title} movie`} />
             <div className="details-overview">
               <h2>{title}</h2>
@@ -124,6 +125,7 @@ export function SelectedMovie({
                   <p className="badge">{genre}</p>
                 ))}
               </div>
+
               <CriticRatings
                 imdbRating={imdbRating}
                 rottenTomatoesRating={rottenTomatoesRating}
