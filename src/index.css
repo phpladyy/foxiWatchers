@@ -417,7 +417,7 @@ body {
   padding: 1rem;
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.9s;
+  transition: all 0.9s ease-in-out;
 }
 
 .seconds {
@@ -455,6 +455,10 @@ body {
 @media not all and (pointer: coarse) {
   .list.list-movies li:hover {
     background-color: var(--color-background-100);
+  }
+  .list.list-movies li:hover :is(.badge-watched,.badge-watchlist) {
+    box-shadow: 0 0 0.4vw black;
+
   }
   .btn-add:hover,
   .btn-switch:hover,
