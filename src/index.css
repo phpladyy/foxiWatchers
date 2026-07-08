@@ -1,13 +1,15 @@
 :root {
   --color-primary-light: #dbc7e7;
   --color-text: #000000;
-  --color-text-dark: #adb5bd;
+  --color-text-dark: #464646;
   --color-background-100: #ffafcc;
   --color-background-500: #ffc8dd;
   --color-background-900: #cdb4db;
-  --color-babyblue: #a2d2ff;
-  --color-red: #fa5252;
-  --color-red-dark: #e03131;
+  --color-close: #7b2cbf;
+  --color-badge-1: #a2d2ff;
+  --color-badge-2: #ffafcc;
+  --color-button: #ff8fab;
+  --color-button-neon: #f32865;
 }
 
 * {
@@ -34,7 +36,7 @@ body {
   transition: scrollbar-color 0.3s;
 
   &:hover {
-    scrollbar-color: #a2d2ff transparent;
+    scrollbar-color: #f4b6f7 transparent;
   }
 
   &:not(:hover)::-webkit-scrollbar-thumb {
@@ -52,25 +54,8 @@ body {
   }
 }
 
-.content {
-  padding: 17px 9px 17px 17px;
-  width: 300px;
-  height: 200px;
-  word-break: break-all;
-  overflow-y: scroll;
-  animation: background 5s infinite alternate;
-}
-
-@keyframes background {
-  from {
-    background: pink;
-  }
-  to {
-    background: #c0d6ff;
-  }
-}
 .nav-bar {
-  color: #000000;
+  color: var(--color-text);
   display: grid;
   grid-template-columns: 0.6fr 1.6fr 0.4fr 0.4fr;
   align-items: center;
@@ -101,7 +86,7 @@ body {
 .userPopup {
   font-size: 3vmin;
   text-align: center;
-  color: #000000;
+  color: var(--color-text);
   align-items: center;
   display: flex;
   justify-content: center;
@@ -268,7 +253,7 @@ body {
   aspect-ratio: 1;
   border-radius: 50%;
   border: 2px solid rgb(0, 0, 0);
-  background-color: #ff8fab;
+  background-color: var(--color-button);
   color: var(--color-text);
   font-size: 1.5rem;
   font-weight: bold;
@@ -310,12 +295,14 @@ body {
   width: 2vw;
 }
 .imdbLogo-big {
-  color: #7b2cbf;
   width: 3.6vw;
 }
 .genres {
   display: flex;
   gap: 0.5vw;
+}
+.badge {
+  font-size: 1.2rem;
 }
 .badge,
 .badge-watched,
@@ -325,7 +312,7 @@ body {
   border-radius: 5px;
   align-self: flex-start;
   display: inline-block;
-  background-color: var(--color-background-500);
+  background-color: var(--color-badge-1);
 }
 .badge-watched,
 .badge-watchlist {
@@ -335,10 +322,10 @@ body {
   padding: 0.4vw 0.8vw;
 }
 .badge-watched {
-  background-color: var(--color-background-100);
+  background-color: var(--color-badge-1);
 }
 .badge-watchlist {
-  background-color: var(--color-babyblue);
+  background-color: var(--color-badge-2);
 }
 .details {
   line-height: 1.4;
@@ -380,7 +367,7 @@ body {
 }
 
 .details-overview p {
-  color: gray;
+  color: var(--color-text-dark);
   display: flex;
   align-items: center;
   gap: 0.8rem;
@@ -409,7 +396,7 @@ body {
 .btn-logout {
   text-align: center;
   text-decoration: none;
-  background-color: #ff8fab;
+  background-color: var(--color-button);
   color: var(--color-text);
   border: none;
   border-radius: 10rem;
@@ -438,7 +425,7 @@ body {
   aspect-ratio: 1;
   border-radius: 50%;
   border: none;
-  background-color: #7b2cbf;
+  background-color: var(--color-close);
   color: var(--color-background-500);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
   font-family: sans-serif;
@@ -456,16 +443,15 @@ body {
   .list.list-movies li:hover {
     background-color: var(--color-background-100);
   }
-  .list.list-movies li:hover :is(.badge-watched,.badge-watchlist) {
+  .list.list-movies li:hover :is(.badge-watched, .badge-watchlist) {
     box-shadow: 0 0 0.4vw black;
-
   }
   .btn-add:hover,
   .btn-switch:hover,
   .btn-delete:hover {
     border-radius: 20px;
-    box-shadow: 2px 2px 22px #f32865;
-    background-color: #f32865;
+    box-shadow: 2px 2px 22px var(--color-button-neon);
+    background-color: var(--color-button-neon);
   }
 }
 
