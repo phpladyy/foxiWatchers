@@ -83,13 +83,7 @@ body {
   background-color: var(--color-background-500);
   border-radius: 0.9rem;
 }
-@media (max-width: 800px) {
-  .nav-bar {
-    padding: 0 1rem;
-    height: 8rem;
-    grid-template-columns: 0.3fr 0.7fr 0.4fr 0.2fr;
-  }
-}
+
 .nav-profile-picture {
   border-radius: 10%;
   justify-self: end;
@@ -137,13 +131,7 @@ body {
   gap: 2.4rem;
   justify-content: center;
 }
-@media (max-width: 800px) {
-  .main {
-    justify-content: start;
-    align-items: center;
-    flex-direction: column;
-  }
-}
+
 
 .box {
   scrollbar-gutter: stable;
@@ -153,11 +141,7 @@ body {
   overflow: auto;
   position: relative;
 }
-@media (max-width: 800px) {
-  .box {
-    width: 82vw;
-  }
-}
+
 .loader {
   text-align: center;
   text-transform: uppercase;
@@ -202,15 +186,7 @@ body {
   color: var(--color-text);
   background-color: var(--color-primary-light);
 }
-@media (max-width: 800px) {
-  .logo h1 {
-  font-size: 2.2rem;
-  font-weight: 800;
-}
-  .search {
-    width: 34vw;
-  }
-}
+
 .search::placeholder {
   color: var(--color-text-dark);
 }
@@ -269,10 +245,6 @@ body {
   transition: all 0.3s;
 }
 
-.list.list-movies li:hover {
-  background-color: var(--color-background-100);
-}
-
 .list img {
   width: 100%;
   grid-row: 1 / -1;
@@ -293,15 +265,7 @@ body {
   align-items: center;
   gap: 0.8rem;
 }
-@media (max-width: 800px) {
-  .list li {
-    grid-template-columns: 9vw 1fr;
-    font-size: 2.8rem;
-  }
-  .list h3 {
-    font-size: 3.1rem;
-  }
-}
+
 
 .btn-delete {
   position: absolute;
@@ -317,12 +281,7 @@ body {
   cursor: pointer;
   transition: all 0.3s;
 }
-@media (max-width: 800px) {
-  .btn-delete {
-    font-size: 2rem;
-    height: 2.8rem;
-  }
-}
+
 
 .summary {
   padding: 2.2rem 3.2rem 1.8rem 3.2rem;
@@ -350,14 +309,7 @@ body {
   align-items: center;
   gap: 0.8rem;
 }
-@media (max-width: 800px) {
-  .summary h2 {
-    font-size: 3.4vw;
-  }
-  .summary div {
-    font-size: 3vw;
-  }
-}
+
 .imdbLogo {
   width: 2.6vw;
 }
@@ -367,17 +319,6 @@ body {
 .imdbLogo-big {
   color: #7b2cbf;
   width: 3.6vw;
-}
-@media (max-width: 800px) {
-  .imdbLogo {
-    width: 6vw;
-  }
-  .imdbLogo-big {
-    width: 8.5vw;
-  }
-  .rateLogo {
-    width: 6vw;
-  }
 }
 .genres {
   display: flex;
@@ -391,20 +332,12 @@ body {
   display: inline-block;
   background-color: var(--color-background-500);
 }
-@media (max-width: 800px) {
-  .badge {
-    padding: 0.4vw 1.2vw;
-  }
-}
+
 .details {
   line-height: 1.4;
   font-size: 1.4rem;
 }
-@media (max-width: 800px) {
-  .details {
-    font-size: 2.4rem;
-  }
-}
+
 
 .details header {
   display: flex;
@@ -507,11 +440,7 @@ body {
   }
 }
 
-.btn-add:hover,
-.btn-switch:hover,
-.btn-delete:hover {
-  background-color: #bde0fe;
-}
+
 
 .seconds {
   background-color: var(--color-background-100);
@@ -543,6 +472,20 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+/* hover handling */
+@media not all and (pointer: coarse){
+.list.list-movies li:hover{
+  background-color: var(--color-background-100);
+}
+.btn-add:hover,
+.btn-switch:hover,
+.btn-delete:hover {
+  background-color: #bde0fe;
+}
+
+}
+
 @media (max-width: 800px) {
   .btn-back {
     height: 4.2rem;

@@ -19,6 +19,7 @@
         "npm:@testing-library/user-event@^13.5.0",
         "npm:axios@^1.18.1",
         "npm:react-dom@^19.2.7",
+        "npm:react-responsive@^10.0.1",
         "npm:react-scripts@5.0.1",
         "npm:react@^19.2.7",
         "npm:web-vitals@^2.1.4"

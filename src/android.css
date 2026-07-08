@@ -1,0 +1,91 @@
+@media (max-width: 800px) {
+  .nav-bar {
+    padding: 0 1rem;
+    height: 8rem;
+    grid-template-columns: 0.3fr 0.7fr 0.4fr 0.2fr;
+  }
+  .main {
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .box {
+    width: 82vw;
+  }
+
+  .logo h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+  }
+  .search {
+    width: 34vw;
+  }
+
+  .list li {
+    grid-template-columns: 9vw 1fr;
+    font-size: 2.8rem;
+  }
+  .list h3 {
+    font-size: 3.1rem;
+  }
+  .btn-delete {
+    font-size: 2rem;
+    height: 2.8rem;
+  }
+  .summary h2 {
+    font-size: 3.4vw;
+  }
+  .summary div {
+    font-size: 3vw;
+  }
+
+  .imdbLogo {
+    width: 6vw;
+  }
+  .imdbLogo-big {
+    width: 8.5vw;
+  }
+  .rateLogo {
+    width: 6vw;
+  }
+  .badge {
+    padding: 0.4vw 1.2vw;
+  }
+  .details {
+    font-size: 2.4rem;
+  }
+
+  .details-overview h2 {
+    font-size: 3.4rem;
+  }
+
+  .details-overview p {
+    font-size: 2rem;
+  }
+
+  .star {
+    width: 65vw;
+    height: 4vw;
+    display: "block";
+    cursor: "pointer";
+  }
+
+  .btn-add,
+  .btn-switch,
+  .btn-logout {
+    font-size: 2.6vw;
+    padding: 1.4rem;
+  }
+
+  .btn-back {
+    height: 4.2rem;
+    font-size: 3.4rem;
+  }
+  .hidden {
+    display: none;
+  }
+  .mobileOnly {
+    display: none;
+  }
+}
