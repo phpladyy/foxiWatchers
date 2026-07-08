@@ -49,7 +49,7 @@ export function SelectedMovie({
       userRating,
       imdbID: selectedId,
       title,
-      year,
+      year:Number(year?.split("–").at(0)),
       poster,
       imdbRating: Number(imdbRating),
       rottenTomatoesRating,

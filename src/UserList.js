@@ -9,10 +9,12 @@ export function UserList({
   function handleRemove(e, id) {
     onRemoveListItem(e, id, list, setList, mode);
   }
-
+function compareNumbers(a, b) {
+  return a.year - b.year;
+}
   return (
     <ul className="list list-movies">
-      {list.map((movie) => (
+      {list.sort(compareNumbers).map((movie) => (
         <WatchedItem
           mode={mode}
           key={movie.imdbID}
