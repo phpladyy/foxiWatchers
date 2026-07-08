@@ -19,11 +19,6 @@ html {
   overflow: hidden;
   font-size: 0.8vw;
 }
-@media (max-width: 800px) {
-  html {
-    font-size: 1.3vw;
-  }
-}
 
 body {
   font-family: "Inter", sans-serif;
@@ -131,7 +126,6 @@ body {
   gap: 2.4rem;
   justify-content: center;
 }
-
 
 .box {
   scrollbar-gutter: stable;
@@ -266,7 +260,6 @@ body {
   gap: 0.8rem;
 }
 
-
 .btn-delete {
   position: absolute;
   right: 2.4rem;
@@ -281,7 +274,6 @@ body {
   cursor: pointer;
   transition: all 0.3s;
 }
-
 
 .summary {
   padding: 2.2rem 3.2rem 1.8rem 3.2rem;
@@ -338,7 +330,6 @@ body {
   font-size: 1.4rem;
 }
 
-
 .details header {
   display: flex;
   background-color: var(--color-background-100);
@@ -380,16 +371,6 @@ body {
   gap: 0.8rem;
 }
 
-@media (max-width: 800px) {
-  .details-overview h2 {
-    font-size: 3.4rem;
-  }
-
-  .details-overview p {
-    font-size: 2rem;
-  }
-}
-
 .rating {
   background-color: var(--color-background-100);
   border-radius: 0.9rem;
@@ -407,14 +388,6 @@ body {
   display: "block";
   cursor: "pointer";
 }
-@media (max-width: 800px) {
-  .star {
-    width: 65vw;
-    height: 4vw;
-    display: "block";
-    cursor: "pointer";
-  }
-}
 
 .btn-add,
 .btn-switch,
@@ -431,16 +404,6 @@ body {
   cursor: pointer;
   transition: all 0.3s;
 }
-@media (max-width: 800px) {
-  .btn-add,
-  .btn-switch,
-  .btn-logout {
-    font-size: 2.6vw;
-    padding: 1.4rem;
-  }
-}
-
-
 
 .seconds {
   background-color: var(--color-background-100);
@@ -474,24 +437,17 @@ body {
 }
 
 /* hover handling */
-@media not all and (pointer: coarse){
-.list.list-movies li:hover{
-  background-color: var(--color-background-100);
-}
-.btn-add:hover,
-.btn-switch:hover,
-.btn-delete:hover {
-  background-color: #bde0fe;
-}
-
-}
-
-@media (max-width: 800px) {
-  .btn-back {
-    height: 4.2rem;
-    font-size: 3.4rem;
+@media not all and (pointer: coarse) {
+  .list.list-movies li:hover {
+    background-color: var(--color-background-100);
+  }
+  .btn-add:hover,
+  .btn-switch:hover,
+  .btn-delete:hover {
+    background-color: #bde0fe;
   }
 }
+
 .btn-switch,
 .btn-logout {
   border-radius: 1rem;
@@ -503,16 +459,7 @@ body {
   margin: 1vmin;
   width: 18vmin;
 }
-@media (max-width: 800px) {
-  .hidden {
-    display: none;
-  }
-}
+
 .hiddenPc {
   display: none;
-}
-@media (min-width: 800px) {
-  .mobileOnly {
-    display: none;
-  }
 }
