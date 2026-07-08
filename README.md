@@ -1,1 +1,2 @@
-test
+FoxiPicks
+![Main screen](/mainScreen.png)
