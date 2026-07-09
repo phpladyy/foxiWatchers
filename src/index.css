@@ -465,6 +465,7 @@ body {
   .btn-add:hover,
   .btn-switch:hover,
   .btn-delete:hover {
+    scale: 1.1;
     border-radius: 20px;
     box-shadow: 2px 2px 22px var(--color-button-neon);
     background-color: var(--color-button-neon);
