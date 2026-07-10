@@ -12,6 +12,7 @@ import { Login } from "./Login";
 import { updateTable } from "./updateTable";
 import { UserTab } from "./UserTab";
 import { fetchData } from "./fetchData";
+import { Logo } from "./Logo";
 
 export const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -91,6 +92,11 @@ export default function App() {
     setSelectedId(null);
     setMobileHide("hiddenUserList");
   }
+  function handleLogoClick() {
+    setMobileHide("hiddenUserList");
+    setQuery("");
+    setSelectedId(null);
+  }
   return (
     <>
       {!session ? (
@@ -103,6 +109,7 @@ export default function App() {
             setQuery={setQuery}
             setMobileHide={setMobileHide}
           >
+            <Logo onClick={handleLogoClick} />
             <SearchBar
               onClick={() => handleSearchClick()}
               query={query}
@@ -129,8 +136,8 @@ export default function App() {
                 {isLoading && <Loader />}
                 {!isLoading && !error && (
                   <MovieList
-                  watch_list={watchlist}
-                  watched={watched}
+                    watch_list={watchlist}
+                    watched={watched}
                     movies={movies}
                     onMovieSelect={handleMovieSelect}
                   />
