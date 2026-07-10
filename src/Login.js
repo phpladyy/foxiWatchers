@@ -40,7 +40,7 @@ export function Login({ setUserProfile, setSession }) {
       <Navbar>
         <Logo/>
         <h1>Login to access webpage</h1>
-        <button className="btn-switch" onClick={() => googleAuth()}>
+        <button className="btn-login" onClick={() => googleAuth()}>
           Login
         </button>
       </Navbar>

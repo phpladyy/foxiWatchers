@@ -70,8 +70,8 @@ body {
 
 .nav-bar {
   color: var(--color-text);
-  display: grid;
-  grid-template-columns: 0.6fr 1.6fr 0.4fr 0.4fr;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   height: 7.2rem;
   padding: 0 3.2rem;
@@ -409,7 +409,8 @@ body {
 
 .btn-add,
 .btn-switch,
-.btn-logout {
+.btn-logout,
+.btn-login {
   text-align: center;
   text-decoration: none;
   background-color: var(--color-button);
@@ -422,7 +423,9 @@ body {
   cursor: pointer;
   transition: all 0.9s ease-in-out;
 }
-
+.btn-login {
+  width: 12vw;
+}
 .seconds {
   background-color: var(--color-background-100);
   width: 8rem;
@@ -464,7 +467,8 @@ body {
   }
   .btn-add:hover,
   .btn-switch:hover,
-  .btn-delete:hover {
+  .btn-delete:hover,
+  .btn-login:hover {
     scale: 1.1;
     border-radius: 20px;
     box-shadow: 2px 2px 22px var(--color-button-neon);
