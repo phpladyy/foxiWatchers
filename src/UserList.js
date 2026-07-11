@@ -9,9 +9,9 @@ export function UserList({
   function handleRemove(e, id) {
     onRemoveListItem(e, id, list, setList, mode);
   }
-function compareNumbers(a, b) {
-  return a.year - b.year;
-}
+  function compareNumbers(a, b) {
+    return a.year - b.year;
+  }
   return (
     <ul className="list list-movies">
       {list.sort(compareNumbers).map((movie) => (
@@ -23,6 +23,9 @@ function compareNumbers(a, b) {
           handleRemove={handleRemove}
         />
       ))}
+      {list?.length <= 0 && (
+        <h2>No movies yet find something great and hit add to get started.</h2>
+      )}
     </ul>
   );
 }
@@ -39,7 +42,7 @@ function WatchedItem({
       <h3>{movie.title}</h3>
       <div>
         <p>
-          <ImdbLogo className="imdbLogo"/>
+          <ImdbLogo className="imdbLogo" />
           {movie.imdbRating}
         </p>
         {mode ? (

@@ -34,7 +34,7 @@
 
 html {
   overflow: hidden;
-  font-size: 0.8vw;
+  font-size: max( 0.8vw,11px);
 }
 
 body {
@@ -129,7 +129,7 @@ body {
 
 .box {
   scrollbar-gutter: stable;
-  width: 34vw;
+  width: max(34vw, 500px);
   background-color: var(--color-background-500);
   border-radius: 0.9rem;
   overflow: auto;
@@ -237,6 +237,9 @@ body {
 .list.list-movies li {
   cursor: pointer;
   transition: all 0.3s;
+}
+.list.list-movies > h2 {
+  color: var(--color-text-dark);
 }
 
 .list img {
@@ -406,7 +409,7 @@ body {
   display: "block";
   cursor: "pointer";
 }
-.btn-switch{
+.btn-switch {
   width: 14vw;
 }
 .btn-add,
