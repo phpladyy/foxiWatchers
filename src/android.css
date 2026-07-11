@@ -1,7 +1,4 @@
 @media (max-width: 800px) {
-  html {
-    font-size: 1.3vw;
-  }
   .nav-bar {
     padding: 0 1rem;
     height: 8rem;

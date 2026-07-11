@@ -34,7 +34,7 @@
 
 html {
   overflow: hidden;
-  font-size: min( 1.2vw,15px);
+  font-size: clamp(0.2rem, 1.3vw, 0.9rem);
 }
 
 body {
@@ -319,6 +319,7 @@ body {
   gap: 0.5vw;
 }
 .badge {
+  padding: 0.2rem 0.4rem;
   font-weight: bolder;
   color: var(--color-text);
   font-size: 1.2rem;
@@ -326,7 +327,6 @@ body {
 .badge,
 .badge-watched,
 .badge-watchlist {
-  padding: 0.2vw 0.7vw;
   text-align: center;
   border-radius: 5px;
   align-self: flex-start;
@@ -335,10 +335,10 @@ body {
 }
 .badge-watched,
 .badge-watchlist {
+  padding: 0.4rem 0.8rem;
   font-weight: bolder;
   text-transform: capitalize;
   font-size: 1.3rem;
-  padding: 0.4vw 0.8vw;
 }
 .badge-watched {
   background-color: var(--color-badge-1);
@@ -407,7 +407,7 @@ body {
   width: 100%;
   height: 1.8vw;
 }
-.star:hover{
+.star:hover {
   cursor: pointer;
 }
 .btn-switch {
