@@ -306,13 +306,15 @@ body {
 }
 
 .imdbLogo {
-  width: 2.6vw;
+  width: 3rem;
 }
 .rateLogo {
-  width: 2vw;
+  flex-shrink: 0.2;
+  width: 2.6rem;
 }
 .imdbLogo-big {
-  width: 3.6vw;
+  flex-shrink: 0.2;
+  width: 4.6rem;
 }
 .genres {
   display: flex;
