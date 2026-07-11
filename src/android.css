@@ -74,10 +74,7 @@
   }
 
   .star {
-    width: 65vw;
     height: 4vw;
-    display: "block";
-    cursor: "pointer";
   }
 
   .btn-add,

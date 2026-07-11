@@ -406,8 +406,9 @@ body {
 .star {
   width: 100%;
   height: 1.8vw;
-  display: "block";
-  cursor: "pointer";
+}
+.star:hover{
+  cursor: pointer;
 }
 .btn-switch {
   width: 14vw;
