@@ -155,6 +155,7 @@ export default function App() {
                   onCloseMovie={handleCloseMovie}
                   onAddMovie={handleAddMovie}
                   watched={watched}
+                  setWatched={setWatched}
                   watchlist={watchlist}
                   setWatchlist={setWatchlist}
                 />

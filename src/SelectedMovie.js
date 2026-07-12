@@ -9,6 +9,7 @@ export function SelectedMovie({
   onCloseMovie,
   onAddMovie,
   watched,
+  setWatched,
   watchlist,
   setWatchlist,
   userProfile,
@@ -21,10 +22,6 @@ export function SelectedMovie({
   const isWatchlisted = watchlist
     .map((item) => item.imdbID)
     .includes(selectedId);
-
-  const userRate = watched.find(
-    (movie) => movie.imdbID === selectedId,
-  )?.userRating;
 
   const {
     Rated: pegi,
@@ -49,7 +46,7 @@ export function SelectedMovie({
       userRating,
       imdbID: selectedId,
       title,
-      year:Number(year?.split("–").at(0)),
+      year: Number(year?.split("–").at(0)),
       poster,
       imdbRating: Number(imdbRating),
       rottenTomatoesRating,
@@ -122,7 +119,9 @@ export function SelectedMovie({
               </p>
               <div className="genres">
                 {genre?.split(", ").map((genre) => (
-                  <span key={genre} className="badge">{genre}</span>
+                  <span key={genre} className="badge">
+                    {genre}
+                  </span>
                 ))}
               </div>
 
@@ -153,7 +152,14 @@ export function SelectedMovie({
                   )}
                 </>
               ) : (
-                <p>You already rated this movie {userRate} stars</p>
+                <button
+                  className="btn-add"
+                  onClick={(e) =>
+                    onRemoveListItem(e, selectedId, watched, setWatched)
+                  }
+                >
+                  Remove from Watch History
+                </button>
               )}
               {!isWatched && !userRating && !isWatchlisted && (
                 <button

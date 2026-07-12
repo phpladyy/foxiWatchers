@@ -7,7 +7,7 @@ export function UserList({
   mode,
 }) {
   function handleRemove(e, id) {
-    onRemoveListItem(e, id, list, setList, mode);
+    onRemoveListItem(e, id, list, setList);
   }
   function compareNumbers(a, b) {
     return a.year - b.year;
