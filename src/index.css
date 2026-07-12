@@ -317,6 +317,7 @@ body {
   width: 4.6rem;
 }
 .genres {
+  flex-wrap: wrap;
   display: flex;
   gap: 0.5vw;
 }

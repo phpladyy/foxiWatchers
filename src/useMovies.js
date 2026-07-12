@@ -19,7 +19,6 @@ export function useMovies(query) {
           if (!res.ok) throw new Error("something went wrong with fetching");
           const data = await res.json();
           if (data.Response === "False") throw new Error("Movie not found");
-          console.log(data);
           setMovies(data?.Search || [data]);
         } catch (err) {
           if (err.name !== "AbortError") {

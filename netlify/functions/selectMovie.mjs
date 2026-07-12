@@ -3,12 +3,14 @@ const selectMovie = async (request) => {
   const movie_id = url.searchParams.get("i");
 
   try {
-    const KEY = process.env.REACT_APP_KEY;
+    const KEY = process.env.REACT_REELDB_KEY;
     const res = await fetch(
-      `https://www.omdbapi.com/?apikey=${KEY}&i=${movie_id}`,
+      `https://api.reeldb.io/omdb?apikey=${KEY}&i=${movie_id}`,
     );
+    console.log(res);
     if (!res.ok) throw new Error("something went wrong with fetching");
     const data = await res.json();
+    console.log(data);
     return Response.json(data, { status: 200 });
   } catch (err) {
     return Response.json({ error: err.message }, { status: 500 });
