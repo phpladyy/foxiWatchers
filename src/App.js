@@ -71,8 +71,7 @@ export default function App() {
     e.stopPropagation();
     const update = list.filter((item) => item.imdbID !== id);
     setList(update);
-
-    const dbColumn = mode ? "watched_movies" : "watch_list";
+    const dbColumn = list === watched ? "watched_movies" : "watch_list";
     await updateTable(session, update, dbColumn);
   }
 
