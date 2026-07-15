@@ -9,8 +9,7 @@ const searchMovies = async (request) => {
     });
   }
   try {
-    const KEY = process.env.REACT_APP_KEY;
-
+    const KEY = process.env.OMDB_KEY;
     const res = await fetch(
       query.length > 2
         ? `https://www.omdbapi.com/?s=${query}*&apikey=${KEY}`
